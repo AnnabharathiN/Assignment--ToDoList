@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+Assignment 1 — ToDo List (TODO-list)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React ToDo List application built with modular components, state and effect hooks, controlled inputs, props callbacks, and a separate CSS stylesheet.
 
-## Available Scripts
+Project Files
 
-In the project directory, you can run:
+Root & Entry Files
 
-### `npm start`
+.gitignore
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Lists files and folders Git ignores—such as node_modules/, build/, and .env files—so only source and project files are tracked.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+package.json
 
-### `npm test`
+Stores project metadata, installed packages (react, react-dom, and build scripts), and project configuration.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+public/index.html
 
-### `npm run build`
+The base HTML page that provides the <div id="root"></div> element where the React application mounts.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+src/index.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The entry point that imports App and mounts it into <div id="root"></div> via ReactDOM.createRoot.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Styling & Main Component
 
-### `npm run eject`
+src/App.css
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Contains all styles for the application—including layout, cards, form controls, filter buttons, action buttons, and the .strikethrough (text-decoration: line-through) class for completed tasks.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+src/App.jsx
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The central state container that:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Loads and saves the todos list in localStorage.
 
-## Learn More
+Defines event handlers for adding (handleAddTask), toggling completion (handleToggleTask), deleting (handleDeleteTask), and clearing (handleClearAll) tasks.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Passes state and callbacks down to child components via props.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Components (src/components/)
 
-### Code Splitting
+src/components/ToDoForm.jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Renders the form with a required Task Name input (with validation if left empty), an optional Description input, and an Add Task submit button that passes new tasks to App.jsx.
 
-### Analyzing the Bundle Size
+src/components/ToDoStats.jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Displays counts for Total, Active, and Completed tasks based on props from App.jsx, plus a Clear All button when tasks are present.
 
-### Making a Progressive Web App
+src/components/ToDoList.jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Manages filter state (all, active, completed), shows the task count, and renders a ToDoItem for each matching task.
 
-### Advanced Configuration
+src/components/ToDoItem.jsx
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Renders an individual task with strikethrough text when completed, a Done / Redo toggle button, and a Delete button.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
